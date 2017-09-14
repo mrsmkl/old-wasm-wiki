@@ -1,4 +1,4 @@
-The basic difference between off-chain and on-chain interpreters is that off-chain interpreter has easy access to the machine state, and the on-chain interpreter will only have access to the parts of the memory that was sent to blockchain.
+The basic difference between off-chain and on-chain interpreters is that off-chain interpreter has easy access to the machine state, and the on-chain interpreter will only have access to the parts of the memory that was sent to blockchain. We say that the interpreter is stuck if there is not enough data to run it forward.
 
 Here is a simplified memory model for off-chain interpreter:
 ```
@@ -57,3 +57,5 @@ contract Onchain {
   }
 }
 ```
+
+The rest of the interpreter is the same for on-chain and off-chain interpreters. We just have to make sure that each step or phase is small enough so that it won't be stuck. Another possibility would be to extend the on-chain memory model so that more data can be posted.
