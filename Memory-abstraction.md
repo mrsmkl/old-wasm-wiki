@@ -63,3 +63,5 @@ contract Onchain {
 ```
 
 The rest of the interpreter is the same for on-chain and off-chain interpreters. We just have to make sure that each step or phase is small enough so that it won't be stuck. Another possibility would be to extend the on-chain memory model so that more data can be posted.
+
+Reference: https://github.com/chriseth/scrypt-interactive/
