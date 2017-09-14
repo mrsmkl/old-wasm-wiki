@@ -34,17 +34,20 @@ contract Onchain {
   bytes32 memory_root;
   bytes32[] merkle_proof;
   function getPc() returns (uint) {
+     // If the hash is not correct, we do not yet know what the pc is in the state
      require(sha3(pc, reg1, opcode, code_root, memory_root) == state);
      return pc;
   }
   function setPc(uint newval) {
      require(sha3(pc, reg1, opcode, code_root, memory_root) == state);
      pc = newval;
+     // State has changed, generate new hash
      state = sha3(pc, reg1, opcode, code_root, memory_root);
   }
   // getRoot, getLeaf and setLeaf are defined in instruction.sol
   function getMemory(uint pos) returns (uint) {
      require(sha3(pc, reg1, opcode, code_root, memory_root) == state);
+     // If the merkle proof is not correct, we do not know what is the memory value in position pos
      require(getRoot(merkle_proof, pos) == memory_root);
      return uint(getLeaf(merkle_proof, pos));
   }
@@ -52,6 +55,7 @@ contract Onchain {
      require(sha3(pc, reg1, opcode, code_root, memory_root) == state);
      require(getRoot(merkle_proof, pos) == memory_root);
      setLeaf(merkle_proof, pos, bytes32(newval));
+     // First generate new memory root, then new state
      memory_root = getLeaf(merkle_proof, pos);
      state = sha3(pc, reg1, opcode, code_root, memory_root);
   }
