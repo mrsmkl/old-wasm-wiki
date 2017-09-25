@@ -3,12 +3,11 @@
 Before the task is ran, its specification must be posted to blockchain. We assume that the specification is the hash of the initial state of the VM (`start_state`). The VM has the following fields:
 * `code`: Merkle root of the op code array.
 * `stack`: Merkle root of the stack.
-* `break_stack1` and `break_stack2`: Merkle roots of the control stack.
 * `call_stack`: Merkle root of the function call stack.
 * `globals`: WebAssembly global variables.
+* `input`: Merkle root for the input from the blockchain.
 * `pc`: Program counter.
 * `stack_ptr`: Pointer to the top of the stack.
-* `break_ptr`: Pointer to the top of the control stack.
 * `call_ptr`: Pointer to the top of the call stack.
 * `memsize`: Size of the memory.
 
@@ -22,7 +21,7 @@ One step is performing one instruction.
 
 # Challenging the output of the task
 
-If a verifier disagrees with the output, it can post a challenge using contract https://github.com/mrsmkl/spec/blob/master/solidity/interactive.sol (This contract is not tested at the moment, so many details are wrong)
+If a verifier disagrees with the output, it can post a challenge using contract https://github.com/mrsmkl/spec/blob/master/solidity/interactive2.sol
 
 The contract has the following inputs and global variables:
 * `start_state`: specification of the task.
@@ -36,7 +35,7 @@ The contract has the following inputs and global variables:
 * `idx2`: First known state where bot players disagree.
 * `proof[i]`: Perhaps should be called states, these are the hashes of the VM after `i` steps. If there is no hash, it means that it has not been posted to the blockchain yet. `O(log steps)` hashes will be posted to blockchain.
 
-If it is the provers turn, it will use the `report` method to post a hash of a state between `idx1` and `idx2`. For example if binary search is used, this will be hash of state `idx1 + (idx2-idx1)/2` (check formula).
+If it is the prover's turn, it will use the `report` method to post a hash of a state between `idx1` and `idx2`. For example if binary search is used, this will be hash of state `idx1 + (idx2-idx1)/2` (check formula).
 
 If it is the challengers turn, for example in binary search it will tell if it agrees or disagrees with the state that the prover posted previously.
 
@@ -57,7 +56,7 @@ When the point of disagreement is found, the prover can use the off-line interpr
 * `write1`: first write from some register to memory or stack.
 * `write2`: second write from some register to memory or stack.
 * `pc`: updating program counter.
-* `stack_ptr`, `break_ptr`, `call_ptr`: updating pointers.
+* `stack_ptr`, `call_ptr`: updating pointers.
 * `memsize`: updating the memory size. After this phase, we should be in the final state of the transition (the first state where the players disagree).
 
 So that all phases won't have to be checked, the challenger select the phase where it sees the error happening. The prover can then post one of the proofs that will be checked by the on-line interpreter. (Actually the challenger could just provide a proof that some of the phases generates a different state compared to what prover claimed.)
