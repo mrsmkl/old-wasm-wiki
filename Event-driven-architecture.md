@@ -14,11 +14,11 @@ For example in the verification game:
 ## What data the events should include?
 
 I think it is simplest if the events include as much data as is needed for generating a reply.
-But it will be cheaper to include less data, so we could have a partial function `query` that will return more data.
+But it will be cheaper to include less data, so we could have a partial function `data` that will return more data.
 
 There is the following requirement: for each event `e` and states `S1` and `S2`,
 ```
-query(S1, e) == query(S2, e)
+data(S1, e) == data(S2, e)
 ```
 Otherwise there could be inconsistent data.
 
