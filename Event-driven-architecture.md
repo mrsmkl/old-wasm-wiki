@@ -2,7 +2,10 @@
 
 The system has state `S`. There are transactions (set `TR`) that can modify the system state. Assume there are two actors, the node and the opponent with the sets of transactions `TR_n \union TR_o = TR`. These transactions can generate new system state `process(S, tr)`
 
-The node has internal state. The goal of the node is to keep its internal state consistent with the system state, represented by predicate `consistent(S)`. The system and the predicate have to be designed so that the opponent cannot put it to inconsistent state: `consistent(S) /\ tr \in TR_o => consistent(process(S, tr))`.
+The node has internal state. The goal of the node is to keep its internal state consistent with the system state, represented by predicate `consistent(S)`. The system and the predicate have to be designed so that the opponent cannot put it to inconsistent state
+```
+consistent(S) /\ tr \in TR_o => consistent(process(S, tr))
+```
 
 For example in the verification game:
 * For the solver, the state will be consistent if each step hash stored in `S` is correct according to the solver
@@ -13,7 +16,10 @@ For example in the verification game:
 I think it is simplest if the events include as much data as is needed for generating a reply.
 But it will be cheaper to include less data, so we could have a partial function `query` that will return more data.
 
-There is the following requirement: for each event `e` and states `S1` and `S2`, `query(S1, e) == query(S2, e)`.
+There is the following requirement: for each event `e` and states `S1` and `S2`,
+```
+query(S1, e) == query(S2, e)
+```
 Otherwise there could be inconsistent data.
 
 ## Generated transactions
