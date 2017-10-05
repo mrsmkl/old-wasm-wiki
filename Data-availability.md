@@ -29,5 +29,7 @@ Who will pay for the distribution of the data?
 
 The peers could vote whether the data is available or not. But perhaps there is no incentive to vote correctly. Then the result would be that the enemies of the task giver vote against and the friends vote for him.
 
-If an actor is suspicious that data is not available, 
+If an actor is suspicious that data is not available, he could request a review, and then a random actor would test if the data is available or not.
+
+Perhaps it must be assumed that most actors are quite neutral, otherwise the solvers could refuse to post the correct solution anyway.
 
