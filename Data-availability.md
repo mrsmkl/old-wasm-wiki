@@ -13,17 +13,23 @@ Of this, the transaction overhead is about 70 gas per byte.
 
 Updating data: 5000/32 = 156 gas per byte. So for volatile data, using storage is cheaper.
 
-## Storj, Filecoin, other similar services
-
-Can these help with data availability, or can the task giver still control the availability?
-
 ## Problems
 
 The first problem is that task giver posts a task hash, but doesn't give the data to the solver. It is hard to determine which one is wrong.
 
+The task giver can keep giving the task, and withhold the data until he himself is assigned to become the solver. Then he can post a wrong answer, and the verifiers cannot challenge.
+
 If the task giver controls access to the data needed for solving the task, he can perhaps find out the identities of the verifiers and bribe them.
 
 Who will pay for the distribution of the data?
+
+## Storj, Filecoin, other similar services
+
+Can these help with data availability, or can the task giver still control the availability?
+
+Filecoin should be able to guarantee availability, perhaps the TrueBit contract can query Filecoin and then find out if the data is publicly available. The solver and verifiers might have to pay the retrievers for downloading the data. The data size should be taken into account when calculating the cost of the task. Still have to be analyzed whether the task giver can control or bribe all the replicas.
+
+If we decide that Filecoin model is good, but it takes long until Filecoin is implemented, a part of the model could be implemented in our nodes.
 
 ## Some ideas
 
