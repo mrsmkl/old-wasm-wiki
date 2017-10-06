@@ -39,3 +39,7 @@ If an actor is suspicious that data is not available, he could request a review,
 
 Perhaps it must be assumed that most actors are quite neutral, otherwise the solvers could refuse to post the correct solution anyway.
 
+## Erasure coding
+
+https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding
+
