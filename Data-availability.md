@@ -13,6 +13,8 @@ Of this, the transaction overhead is about 70 gas per byte.
 
 Updating data: 5000/32 = 156 gas per byte. So for volatile data, using storage is cheaper.
 
+Zipping the wasm files could save over 50% in storage space.
+
 ## Problems
 
 The first problem is that task giver posts a task hash, but doesn't give the data to the solver. It is hard to determine which one is wrong.
