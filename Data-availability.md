@@ -31,15 +31,23 @@ Filecoin should be able to guarantee availability, perhaps the TrueBit contract 
 
 If we decide that Filecoin model is good, but it takes long until Filecoin is implemented, a part of the model could be implemented in our nodes.
 
+## Erasure coding
+
+https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding
+
+I don't know if this can be used directly inside TrueBit, but if it is implemented in a blockchain, data storage there should be cheaper.
+
 ## Some ideas
 
 The peers could vote whether the data is available or not. But perhaps there is no incentive to vote correctly. Then the result would be that the enemies of the task giver vote against and the friends vote for him.
+
+Because of the incentive structure, it can be assumed that the verifiers and solvers will pay something for access to data. Perhaps this will make the problem easier.
 
 If an actor is suspicious that data is not available, he could request a review, and then a random actor would test if the data is available or not.
 
 Perhaps it must be assumed that most actors are quite neutral, otherwise the solvers could refuse to post the correct solution anyway.
 
-## Erasure coding
+https://www.researchgate.net/publication/318899222_Betrayal_Distrust_and_Rationality_Smart_Counter-Collusion_Contracts_for_Verifiable_Cloud_Computing
 
-https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding
+Perhaps this research has something that would be useful to implement for preventing collusion and bribing.
 
