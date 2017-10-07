@@ -51,3 +51,5 @@ https://www.researchgate.net/publication/318899222_Betrayal_Distrust_and_Rationa
 
 Perhaps this research has something that would be useful to implement for preventing collusion and bribing.
 
+Relaxing the correctness requirement: the task giver will take care of the data availability, and then the correctness will basically be guaranteed for just the task giver. The task giver can be some kind of organization that has incentive to keep the data available.
+
