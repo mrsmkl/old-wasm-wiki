@@ -33,6 +33,10 @@ Filecoin should be able to guarantee availability, perhaps the TrueBit contract 
 
 If we decide that Filecoin model is good, but it takes long until Filecoin is implemented, a part of the model could be implemented in our nodes.
 
+Swarm incentive model: http://swarm-gateways.net/bzz:/theswarm.eth/ethersphere/orange-papers/1/sw%5E3.pdf
+
+These systems seem to be more interested in ensuring the availability for the publisher of the data.
+
 ## Erasure coding
 
 https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding
