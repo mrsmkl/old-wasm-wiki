@@ -24,6 +24,9 @@ Cons:
 * Need to implement floating point operations on-chain.
 * Might be harder to check if posted WASM files are valid.
 
+Perhaps this can be combined with the first solution so that before solvers run the code with a JIT, they convert the
+WASM file to remove nondeterminism.
+
 ## Replace floating point operations with integer implementations
 
 In the WASM file, each floating point operation is replaced with a call to software implementation of that operation.
