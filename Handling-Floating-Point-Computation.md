@@ -26,6 +26,8 @@ Cons:
 
 ## Replace floating point operations with integer implementations
 
+Each floating point operation is replaced with a call to software implementation of that operation.
+
 Pros:
 * Can run with JIT.
 * No floating point needed on-chain.
