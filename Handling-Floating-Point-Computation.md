@@ -26,7 +26,7 @@ Cons:
 
 ## Replace floating point operations with integer implementations
 
-Each floating point operation is replaced with a call to software implementation of that operation.
+In the WASM file, each floating point operation is replaced with a call to software implementation of that operation.
 
 Pros:
 * Can run with JIT.
