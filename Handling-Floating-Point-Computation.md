@@ -39,4 +39,4 @@ Pros:
 
 Cons:
 * Integer operations are slower than hardware implementation.
-* Have to check that WASM files that are posted do not use floating point.
+* Have to check that posted WASM files do not use floating point.
