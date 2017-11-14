@@ -15,7 +15,8 @@ Cons:
 ## Correct all NaNs to a single value
 
 This means that the WASM file will first be converted to another WASM file, where after each operation that might return
-NaN, we check the result and if it is NaN, we change it to a standard value.
+NaN, we check the result and if it is NaN, we change it to a standard value. Perhaps it is more efficiently to canonize 
+NaN values when a floating point value is stored or reinterpreted as integer.
 
 Pros:
 * Can run with JIT.
