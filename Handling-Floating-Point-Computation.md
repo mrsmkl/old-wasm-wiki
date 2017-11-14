@@ -30,6 +30,8 @@ WASM file to remove nondeterminism.
 ## Replace floating point operations with integer implementations
 
 In the WASM file, each floating point operation is replaced with a call to software implementation of that operation.
+Link to a software implementation of floating point operations: https://github.com/tianocore/edk2/tree/master/StdLib/LibC/Softfloat
+
 
 Pros:
 * Can run with JIT.
