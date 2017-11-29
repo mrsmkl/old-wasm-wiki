@@ -3,7 +3,7 @@
 Features
  * Can execute WebAssembly except floating point
  * Simple file system
- * Support for native execution
+ * Support for native execution (JIT)
 
 ## Revision 2
 
