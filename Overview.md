@@ -1,6 +1,6 @@
 # Running the task
 
-Before the task is ran, its specification must be posted to blockchain. We assume that the specification is the hash of the initial state of the VM (`start_state`). The VM has the following fields:
+Before the task is run, its specification must be posted to blockchain. We assume that the specification is the hash of the initial state of the VM (`start_state`). The VM has the following fields:
 * `code`: Merkle root of the op code array.
 * `stack`: Merkle root of the stack.
 * `call_stack`: Merkle root of the function call stack.
