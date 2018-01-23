@@ -5,4 +5,5 @@ For simplicity, we could have a function `getData(hash)` that returns an chunk o
 
 One solution is that the IPFS data has to be registered. There are two possibilities
 * the chunk or a chunk that contains the chunk has been registered as being available in the block chain
+* the chunk has been registered with for example a command `putData(buffer)`, using verification game, it can be checked that this command has been ran before corresponding `getData` command
 
