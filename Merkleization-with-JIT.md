@@ -1,3 +1,16 @@
+## Simple benchmark
+
+This is just calculating factorial of 12345678.
+
+Results
+* Reference interpreter: 25 s
+* ocaml-offchain: 5.3 s
+* wasmi: 4.8 s
+* binaryen: 3.3 s
+* wabt: 2.2 s
+* native C: 0.03 s factorial 1234567890 2.6 s
+* node.js JIT: 0.09 s factorial 1234567890 2.6 s
+
 ## Gas metering
 
 To implement the metering in a way that it doesn't make everything 10x slower, I propose the following:
