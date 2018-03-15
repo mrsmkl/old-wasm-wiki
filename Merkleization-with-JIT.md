@@ -79,3 +79,8 @@ Finally the instructions can be divided into phases, these are designed so that 
 Notes:
 * Easy to have a pointer to original WASM instruction
 
+## Initial performance analysis
+
+Plain WASM: 5.5s
+Constructing critical path: 16s
+Building stack: 28s
