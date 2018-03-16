@@ -11,6 +11,8 @@ Results
 * native C: 0.03 s factorial 1234567890 2.6 s
 * node.js JIT: 0.09 s factorial 1234567890 2.6 s
 
+It seems that at least for some kind of computation, JIT will have a much better efficiency. The most general way to implement merkleization is by using instrumentation, but we need access to data such as contents of stack, which is not accessible easily. For this reason we would have to instrument the code so that it builds an explicit stack in parallel to the internal stack. But doing this in a naive way might erase the performance gains.
+
 ## Critical path
 
 Let's have a coarse measure of number of steps: Each function call is a step, and each loop iteration is a step.
@@ -74,8 +76,9 @@ Notes:
 
 ## Initial performance analysis
 
-Plain WASM: 5.5s
-Constructing critical path: 16s
-Building stack: 28s
+Box2D benchmark
+* Plain WASM: 5.5s
+* Constructing critical path: 16s
+* Building stack: 28s
 
 I think 10x slowdown would be acceptable, but in these results, there is much room for optimization.
