@@ -11,13 +11,6 @@ Results
 * native C: 0.03 s factorial 1234567890 2.6 s
 * node.js JIT: 0.09 s factorial 1234567890 2.6 s
 
-## Gas metering
-
-To implement the metering in a way that it doesn't make everything 10x slower, I propose the following:
-* at the beginning of each function, add gas usage of all instructions in the function
-* at the beginning of each loop iteration, add gas usage of all instructions inside the loop
-* loops can be ignored when calculating the gas usage of a function
-
 ## Critical path
 
 Let's have a coarse measure of number of steps: Each function call is a step, and each loop iteration is a step.
@@ -84,3 +77,5 @@ Notes:
 Plain WASM: 5.5s
 Constructing critical path: 16s
 Building stack: 28s
+
+I think 10x slowdown would be acceptable, but in these results, there is much room for optimization.
