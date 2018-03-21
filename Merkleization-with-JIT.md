@@ -74,6 +74,18 @@ Finally the instructions can be divided into phases, these are designed so that 
 Notes:
 * Easy to have a pointer to original WASM instruction
 
+## Initial state
+
+Following data has to be calculated
+* Initial memory
+* Jump tables, including function addresses
+* Initial globals
+* Call tables
+
+Global variables are mostly used for interacting with JS, so they can be changed to memory accesses or inlined.
+Instead of special memory initialization, there could be code to initialize it, then we can start from empty memory.
+Calculating jump tables and the call table will need separate programs to calculate them.
+
 ## Initial performance analysis
 
 Box2D benchmark
