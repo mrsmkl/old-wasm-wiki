@@ -31,6 +31,15 @@ The prover will then run the task with off-line interpreter and post the hash of
 the computation took. (There will have to be a flag in the VM to tell that the execution has ended or something).
 One step is performing one instruction.
 
+## Specification of the code
+
+There are few reasons why it is not convenient to simply use WASM binary code for the representation of the code:
+1. Initialization: the code execution should start from a simple state, but WASM includes complex initialization.
+2. For each jump, we need to know the next PC and the change in stack.
+3. Handling more complex instructions like `br_table`.
+
+For these reasons the code is preprocessed into another format, description here https://github.com/TrueBitFoundation/ocaml-offchain/wiki/Initializing-and-preprocessing-WebAssembly
+
 # Challenging the output of the task
 
 If a verifier disagrees with the output, it can post a challenge using contract https://github.com/mrsmkl/spec/blob/master/solidity/interactive2.sol
