@@ -1,15 +1,27 @@
 # Running the task
 
-Before the task is run, its specification must be posted to blockchain. We assume that the specification is the hash of the initial state of the VM (`start_state`). The VM has the following fields:
+Before the task is run, its specification must be posted to blockchain. We assume that the specification is the hash of the initial state of the VM (`start_state`). The VM has two kinds of fields, merkle roots for state and registers. The state contains the following fields:
 * `code`: Merkle root of the op code array.
 * `stack`: Merkle root of the stack.
-* `call_stack`: Merkle root of the function call stack.
+* `memory`: Merkle root of memory.
 * `globals`: WebAssembly global variables.
-* `input`: Merkle root for the input from the blockchain.
+* `calltable`: Table of function pointers.
+* `calltable_types`: Types of function pointers.
+* `call_stack`: Merkle root of the function call stack.
+* `input_size`: Merkle root for the sizes of input files.
+* `input_name`: Merkle root for the names of input files.
+* `input_data`: Merkle root for the contents of input files.
+
+These are binary merkle roots for 64-bit values, calculated using keccak256. Zero is the default value, except for `calltable_types` it is `-1`. `input_name` and `input_data` are two level merkle trees. There are always 1024 files.
+
+There are the following registers:
 * `pc`: Program counter.
-* `stack_ptr`: Pointer to the top of the stack.
-* `call_ptr`: Pointer to the top of the call stack.
+* `stack_ptr`: Pointer to the top of the stack. The stack includes local variables.
+* `call_ptr`: Pointer to the top of the call stack. Stores the return location.
 * `memsize`: Size of the memory.
+These are considered as 256-bit values when calculating the hash.
+
+In the initial state, all values except code and input roots are empty.
 
 In the offline interpreter there are of course just arrays instead of merkle roots.
 
