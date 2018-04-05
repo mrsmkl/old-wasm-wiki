@@ -20,6 +20,8 @@ Perhaps also exiting from a function could be this kind of step.
 Prover and verifier have to find the first step for which they disagree.
 The _critical path_ for a step in execution include the function calls in the stack needed for the step, and for each loop that is in the stack, the loop iteration.
 
+Verification game will give a fixed step for which we want to compute the snapshot.
+
 For example:
 ```
 function asd() {
