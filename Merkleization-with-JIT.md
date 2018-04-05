@@ -57,6 +57,28 @@ The critical path for step 9 is
 
 The idea is that to construct the stack, we only need to handle the critical path, and the critical path should be a small part of the execution (at least in normal programs). 
 
+```
+function asd() {
+   enter(asd);
+   return 123;
+   exit(asd);
+}
+function bsd() {
+   enter(bsd);
+   return 123+asd();
+   exit(bsd);
+}
+function main() {
+   enter(main);
+   for (int i = 0; i < 10; i++) {
+      enter_loop(#123);
+      bsd();
+      exit_loop(#123);
+   }
+   exit(main);
+}
+```
+
 ## Constructing the stack
 
 For each function or loop body in the critical path, we have two versions: one is normal, and other is for the critical path, and this one will construct the stack needed for merkleization. There are probably some ways to optimize this if needed, because it is possible to determine which statements can generate an element on stack.
